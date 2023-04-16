@@ -12,4 +12,6 @@ class HomeViewViewModel: ObservableObject {
     @Published var manageProjectsShowingSheet = false
     @Published var inboxAdd = false
     @Published var name = ""
+    @Published var description = ""
+    @Published var date = Date.now
 }

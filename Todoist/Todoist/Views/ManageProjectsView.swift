@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ManageProjectsView: View {
     
-    @ObservedObject var ps: ProjectService
+    @ObservedObject var ts: TodoistService
     @ObservedObject var hvvm: HomeViewViewModel
     @State var selOption = "Active"
     @State var options = ["Active", "Archived"]
@@ -19,9 +19,8 @@ struct ManageProjectsView: View {
             List {
                 
                 Section {
-                    ForEach(ps.projectLibrary) { project in
+                    ForEach(ts.projects) { project in
                             NavigationLink {
-                                ProjectView(ps: ps, project: $ps.projectLibrary[ps.projectLibrary.firstIndex(where: {$0.id == project.id} ) ?? 0])
                             } label: {
                                 Text("\(project.name)")
                                 
@@ -56,7 +55,7 @@ struct ManageProjectsView: View {
                                     .frame(width: 15, height: 15)
                             }
                             .sheet(isPresented: $hvvm.showingSheet) {
-                                AddProjectView(ps: ps, hvvm: hvvm)
+                                AddProjectView(ts: ts, hvvm: hvvm)
                             }
                             
                         }
@@ -79,7 +78,7 @@ struct ManageProjectsView: View {
     
     struct ManageProjectsView_Previews: PreviewProvider {
         static var previews: some View {
-            ManageProjectsView(ps: ProjectService(), hvvm: HomeViewViewModel())
+            ManageProjectsView(ts: TodoistService(), hvvm: HomeViewViewModel())
         }
     }
 }

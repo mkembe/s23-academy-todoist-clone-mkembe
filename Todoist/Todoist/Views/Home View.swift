@@ -7,10 +7,26 @@
 
 import SwiftUI
 
+
+
 struct Home_View: View {
     
+    init() {
+      let coloredAppearance = UINavigationBarAppearance()
+      coloredAppearance.configureWithOpaqueBackground()
+      coloredAppearance.backgroundColor = .systemRed
+      coloredAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+      coloredAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+      
+      UINavigationBar.appearance().standardAppearance = coloredAppearance
+      UINavigationBar.appearance().compactAppearance = coloredAppearance
+      UINavigationBar.appearance().scrollEdgeAppearance = coloredAppearance
+      
+      UINavigationBar.appearance().tintColor = .white
+    }
+    
     @StateObject var vm = HomeViewViewModel()
-    @StateObject var ps = ProjectService()
+    @StateObject var ts = TodoistService()
     
     var body: some View {
         NavigationStack {
@@ -21,7 +37,7 @@ struct Home_View: View {
                             Image(systemName: "tray.fill")
                                 .foregroundColor(.blue)
                             NavigationLink {
-                                InboxView(ps: ps, vm: vm)
+                                InboxView(ts: ts, vm: vm)
                             } label: {
                                 Text("Inbox")
                         }
@@ -32,7 +48,11 @@ struct Home_View: View {
                                 .scaledToFill()
                                 .foregroundColor(.green)
                                 .frame(width: 20, height: 20)
-                            Text("Today")
+                            NavigationLink {
+                                TodayView(ts: ts)
+                            } label: {
+                                Text("Today")
+                            }
                         }
                         HStack {
                             Image(systemName: "calendar")
@@ -41,9 +61,9 @@ struct Home_View: View {
                         }
                     }
                     Section {
-                        ForEach(ps.projectLibrary) { project in
+                        ForEach($ts.projects) { $project in
                             NavigationLink {
-                                ProjectView(ps: ps, project: $ps.projectLibrary[ps.projectLibrary.firstIndex(where: {$0.id == project.id} ) ?? 0])
+                                ProjectView(ts: ts, project: $project)
                             } label: {
                                 Text("\(project.name)")
                             }
@@ -60,7 +80,7 @@ struct Home_View: View {
                         }
                         .sheet(isPresented: $vm.manageProjectsShowingSheet) {
                             
-                            ManageProjectsView(ps: ps, hvvm: vm)
+                            ManageProjectsView(ts: ts, hvvm: vm)
 
                         }
                     } header: {
@@ -77,12 +97,33 @@ struct Home_View: View {
                                     .frame(width: 15, height: 15)
                             }
                             .sheet(isPresented: $vm.showingSheet) {
-                                AddProjectView(ps: ps, hvvm: vm)
+                                AddProjectView(ts: ts, hvvm: vm)
                                 
                             }
                         }
                     }
                     .textCase(nil)
+                }
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    ToolbarItem{
+                        HStack() {
+                            Image(systemName: "chart.pie")
+                                .foregroundColor(.white)
+                            Text("4/5")
+                                .fixedSize(horizontal: true, vertical: true)
+                                .foregroundColor(.white)
+                                .padding(.trailing, 185)
+
+                            Image(systemName: "magnifyingglass")
+                                .foregroundColor(.white)
+                            Image(systemName: "bell.badge")
+                                .foregroundColor(.white)
+                            Image(systemName: "gearshape")
+                                .foregroundColor(.white)
+                            
+                        }
+                    }
                 }
                 VStack {
                     Spacer()
@@ -91,6 +132,7 @@ struct Home_View: View {
                     }  label: {
                         Image(systemName: "plus.circle.fill")
                             .resizable()
+                            .foregroundColor(.red)
                             .scaledToFill()
                             .frame(width: 40, height: 40)
 
@@ -98,7 +140,7 @@ struct Home_View: View {
                     
                     .padding(.leading, 300)
                     .sheet(isPresented: $vm.inboxAdd) {
-                        AddTaskToInboxView(vm: vm, ps: ps)
+                        AddTaskToInboxView(vm: vm, ts: ts)
                             .presentationDetents([.fraction(0.15)])
 
                     }

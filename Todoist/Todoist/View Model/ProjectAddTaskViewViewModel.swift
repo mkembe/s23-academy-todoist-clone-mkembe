@@ -11,5 +11,6 @@ class ProjectAddTaskViewModel: ObservableObject {
     @Published var showingSheet = false
     @Published var name = ""
     @Published var completed = false
-    @Published var section = pSection(name: "", project: Project(name: "", favorite: false))
+    @Published var section = ProjectSection(name: "")
+    @Published var description = ""
 }

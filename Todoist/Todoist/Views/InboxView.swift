@@ -9,20 +9,22 @@ import SwiftUI
 
 struct InboxView: View {
     
-    @ObservedObject var ps: ProjectService
+    @ObservedObject var ts: TodoistService
     @ObservedObject var vm: HomeViewViewModel
+    @StateObject var tvvm = TaskViewViewModel()
     
     var body: some View {
-        ZStack {
+        NavigationStack {
             VStack {
-                ScrollView(.vertical) {
-                    ForEach(ps.taskLibrary) { task in
-                        if(!task.existsInProject) {
-                            Text("\(task.name)")
-                        }
+                List {
+                    ForEach($ts.inboxTasks) { task in
+                        
+                        TaskView(task: task, vm: tvvm)
+
                     }
                 }
             }
+            .listStyle(GroupedListStyle())
             VStack {
                 Spacer()
                 Button() {
@@ -30,6 +32,7 @@ struct InboxView: View {
                 }  label: {
                     Image(systemName: "plus.circle.fill")
                         .resizable()
+                        .foregroundColor(.red)
                         .scaledToFill()
                         .frame(width: 40, height: 40)
 
@@ -37,7 +40,16 @@ struct InboxView: View {
                 
                 .padding(.leading, 300)
                 .sheet(isPresented: $vm.inboxAdd) {
-                    AddTaskToInboxView(vm: vm, ps: ps)
+                    AddTaskToInboxView(vm: vm, ts: ts)
+                }
+            }
+        }
+        .toolbar {
+            ToolbarItem {
+                HStack {
+                    Text("**Inbox**").font(.title2)
+                        .foregroundColor(.white)
+                    Spacer()
                 }
             }
         }
@@ -47,6 +59,6 @@ struct InboxView: View {
 
 struct InboxView_Previews: PreviewProvider {
     static var previews: some View {
-        InboxView(ps: ProjectService(), vm: HomeViewViewModel())
+        InboxView(ts: TodoistService(), vm: HomeViewViewModel())
     }
 }

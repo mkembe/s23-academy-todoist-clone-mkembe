@@ -9,24 +9,23 @@ import SwiftUI
 
 struct TaskListView: View {
     
-    @ObservedObject var ps: ProjectService
-    @Binding var section: pSection
+    @ObservedObject var ts: TodoistService
+    @Binding var section: ProjectSection
+    @StateObject var vm = TaskViewViewModel()
     
     var body: some View {
         VStack {
-            ForEach(ps.taskLibrary) { task in
-                
-                if(task.section?.name == section.name) {
-                    Text("\(task.name)")
+            ForEach($section.tasks) { $task in
+                TaskView(task: $task, vm: vm)
                 }
+            
 
             }
         }
     }
-}
 
 struct TaskListView_Previews: PreviewProvider {
     static var previews: some View {
-        TaskListView(ps: ProjectService(), section: .constant(pSection(name: "", project: Project(name: "", favorite: false))))
+        TaskListView(ts: TodoistService(), section: .constant(ProjectSection(name: "")))
     }
 }

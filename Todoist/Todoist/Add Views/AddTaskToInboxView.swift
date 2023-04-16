@@ -10,23 +10,38 @@ import SwiftUI
 struct AddTaskToInboxView: View {
     
     @ObservedObject var vm: HomeViewViewModel
-    @ObservedObject var ps: ProjectService
+    @ObservedObject var ts: TodoistService
+    @State var addDate = true
     
     var body: some View {
         NavigationStack {
             HStack {
                 TextField("Task Name", text: $vm.name)
                 Button ("Add") {
-                    ps.taskLibrary.append(Task(name: vm.name, isCompleted: false, existsInProject: false))
+                    if(addDate) {
+                        ts.inboxTasks.append(Task(name: vm.name, isCompleted: false, description: vm.description, dueDate: vm.date))
+                    }
+                    else {
+                        ts.inboxTasks.append(Task(name: vm.name, isCompleted: false, description: vm.description, dueDate: vm.date))
+                    }
                     vm.inboxAdd.toggle()
                 }
             
             }
+            TextField("Description", text: $vm.description)
+
+            DatePicker(selection: $vm.date, in: ...Date.now, displayedComponents: .date) {
+                Text("Due date")
+            }
+            Button("no date") {
+                addDate = false
+            }
+
         }    }
 }
 
 struct AddTaskToInboxView_Previews: PreviewProvider {
     static var previews: some View {
-        AddTaskToInboxView(vm: HomeViewViewModel(), ps: ProjectService())
+        AddTaskToInboxView(vm: HomeViewViewModel(), ts: TodoistService())
     }
 }

@@ -11,7 +11,7 @@ struct AddSectionView: View {
     
     @Binding var project: Project
     @ObservedObject var vm = AddSectionViewViewModel()
-    @ObservedObject var ps: ProjectService
+    @ObservedObject var ts: TodoistService
     
     var body: some View {
         NavigationStack {
@@ -19,7 +19,7 @@ struct AddSectionView: View {
                 TextField("**Section name**", text: $vm.name)
                     .padding(.leading, 5)
                 Button() {
-                    ps.sectionLibrary.append(pSection(name: vm.name, project: project))
+                    project.sections.append(ProjectSection(name: vm.name))
                     vm.showingSheet.toggle()
                 } label: {
                     Image(systemName: "arrow.up.circle.fill")
@@ -35,6 +35,6 @@ struct AddSectionView: View {
 
 struct AddSectionView_Previews: PreviewProvider {
     static var previews: some View {
-        AddSectionView(project: .constant(Project(name: " ", favorite: false)), vm: AddSectionViewViewModel(), ps: ProjectService())
+        AddSectionView(project: .constant(Project(name: " ")), vm: AddSectionViewViewModel(), ts: TodoistService())
     }
 }
