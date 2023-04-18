@@ -16,9 +16,16 @@ struct TaskInfoView: View {
         NavigationStack {
             VStack {
                 HStack {
-                        
-                    
+                    Spacer()
+                    Image(systemName: "xmark.circle.fill")
+                        .resizable()
+                        .scaledToFill()
+                        .foregroundColor(.gray)
+                        .frame(width: 28, height: 28)
                 }
+                .padding(.top, 15)
+                .padding(.trailing, 16)
+                .padding(.bottom, 20)
                 HStack {
                     Image(systemName: "circle")
                         .resizable()
@@ -50,6 +57,7 @@ struct TaskInfoView: View {
                     
                 }
                 .padding(.leading, 10)
+                .padding(.bottom, 15)
                 HStack {
                     Image(systemName: "sidebar.squares.left")
                         .foregroundColor(.green)
