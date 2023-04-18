@@ -34,7 +34,7 @@ struct ProjectView: View {
                                 .fill(.gray)
                                 .frame(width: 350, height: 40)
                                 .cornerRadius(6)
-                                .opacity(0.25)
+                                .opacity(0.15)
                             HStack {
                                 Image(systemName: "plus.rectangle")
                                     .foregroundColor(.black)
@@ -51,7 +51,7 @@ struct ProjectView: View {
                         
                         
                 }
-                    .padding(.top, 50)
+                    .padding(.top, 30)
                     Spacer()
                 }
             }

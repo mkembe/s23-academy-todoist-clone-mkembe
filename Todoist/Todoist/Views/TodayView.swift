@@ -61,6 +61,8 @@ struct TodayView: View {
                                 let currentDate = calendar.date(from: calendar.dateComponents([.year, .month, .day], from: Date()))
                                                             
                                 if(taskDate == currentDate) {
+                                    
+                     
                                     TaskView(task: task, vm: vm)
                                 }
                                 
@@ -75,6 +77,7 @@ struct TodayView: View {
                             .bold()
                             .foregroundColor(.black)
                     }
+                    .padding(.leading, -20)
                     
                 } .textCase(nil)
             }

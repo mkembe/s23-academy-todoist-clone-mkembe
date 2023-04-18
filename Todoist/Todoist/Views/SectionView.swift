@@ -24,8 +24,9 @@ struct SectionView: View {
                 
             }
             .padding(.leading, -180)
-            .padding(.top, 50)
+            .padding(.top, 30)
             TaskListView(ts: ts, section: $section)
+                .padding(.top)
             Button {
                 patsvm.showingSheet.toggle()
             } label: {
@@ -35,7 +36,7 @@ struct SectionView: View {
                         .frame(width: 350, height: 40)
                         .cornerRadius(6)
                         .shadow(color: .black, radius: 10, x: 0, y: 8)
-                        .opacity(0.2)
+                        .opacity(0.15)
 
                     HStack {
                         Image(systemName: "plus")

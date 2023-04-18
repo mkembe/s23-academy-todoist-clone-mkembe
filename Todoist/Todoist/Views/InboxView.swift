@@ -32,7 +32,7 @@ struct InboxView: View {
                 }  label: {
                     Image(systemName: "plus.circle.fill")
                         .resizable()
-                        .foregroundColor(.red)
+                        .foregroundColor(.blue)
                         .scaledToFill()
                         .frame(width: 40, height: 40)
 

@@ -24,12 +24,17 @@ struct TaskView: View {
                     vm.showingSheet.toggle()
                 } label: {
                     Text("\(task.name)").foregroundColor(.black)
+                        .padding(.bottom, 15)
 
 
                 }
                 .sheet(isPresented: $vm.showingSheet) {
                     TaskInfoView(task: $task)
+                        .presentationDetents([.fraction(0.75)])
+
                 }
+                .padding(.top)
+
 
                 Spacer()
                 
@@ -43,7 +48,7 @@ struct TaskView: View {
             .padding()
             .background(Color.white)
             .cornerRadius(6)
-            .shadow(color: .black.opacity(0.2), radius: 10, x: 0, y: 8)
+            .shadow(color: .black.opacity(0.1), radius: 10, x: 0, y: 8)
 
 
         

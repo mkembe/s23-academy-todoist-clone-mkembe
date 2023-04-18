@@ -14,7 +14,7 @@ struct Home_View: View {
     init() {
       let coloredAppearance = UINavigationBarAppearance()
       coloredAppearance.configureWithOpaqueBackground()
-      coloredAppearance.backgroundColor = .systemRed
+      coloredAppearance.backgroundColor = .systemBlue
       coloredAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
       coloredAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
       
@@ -132,7 +132,7 @@ struct Home_View: View {
                     }  label: {
                         Image(systemName: "plus.circle.fill")
                             .resizable()
-                            .foregroundColor(.red)
+                            .foregroundColor(.blue)
                             .scaledToFill()
                             .frame(width: 40, height: 40)
 
