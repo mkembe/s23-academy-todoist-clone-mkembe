@@ -16,12 +16,20 @@ struct TaskInfoView: View {
         NavigationStack {
             VStack {
                 HStack {
+                        
+                    
+                }
+                HStack {
                     Image(systemName: "circle")
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 20, height: 20)
                     Button {
                         isShowing.toggle()
                     } label: {
                         Text("\(task.name)")
                             .foregroundColor(.black).bold()
+                            .font(.title)
                     }
                     .sheet(isPresented: $isShowing) {
                         VStack {
@@ -45,14 +53,15 @@ struct TaskInfoView: View {
                 HStack {
                     Image(systemName: "sidebar.squares.left")
                         .foregroundColor(.green)
-                    Text("April 15")
+                    Text("Today at 10:00 PM")
+                        .font(.subheadline)
                     Spacer()
                 }
                 .padding(.leading, 10)
-                HStack {
-                    TextField("\(task.description ?? "Description")", text: $task.description.toUnwrapped(defaultValue: ""))
-                }
+
             }
+
+            Spacer()
         }
     }
 }
