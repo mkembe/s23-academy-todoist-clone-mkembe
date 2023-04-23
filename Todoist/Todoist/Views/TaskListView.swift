@@ -16,7 +16,9 @@ struct TaskListView: View {
     var body: some View {
         VStack {
             ForEach($section.tasks) { $task in
-                TaskView(task: $task, vm: vm)
+                if(task.isCompleted == false) {
+                    TaskView(task: $task, vm: vm)
+                }
                 }
             
 

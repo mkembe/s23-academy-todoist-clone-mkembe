@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		B23B414229EB7F6D0062A3E7 /* TodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23B414129EB7F6D0062A3E7 /* TodayView.swift */; };
+		B2519B3029F0EDB700D649C1 /* InboxTaskInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2519B2F29F0EDB700D649C1 /* InboxTaskInfoView.swift */; };
+		B2519B3229F0EDF200D649C1 /* InboxVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2519B3129F0EDF200D649C1 /* InboxVM.swift */; };
+		B2519B3429F4DB3400D649C1 /* UpcomingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2519B3329F4DB3400D649C1 /* UpcomingView.swift */; };
 		B27C39D429E9D78F00757662 /* SectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27C39D329E9D78F00757662 /* SectionView.swift */; };
 		B27C3A0329EB05E800757662 /* TodoistService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27C3A0229EB05E800757662 /* TodoistService.swift */; };
 		B27C3A0529EB061100757662 /* ProjectSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27C3A0429EB061100757662 /* ProjectSection.swift */; };
@@ -37,6 +40,9 @@
 
 /* Begin PBXFileReference section */
 		B23B414129EB7F6D0062A3E7 /* TodayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayView.swift; sourceTree = "<group>"; };
+		B2519B2F29F0EDB700D649C1 /* InboxTaskInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxTaskInfoView.swift; sourceTree = "<group>"; };
+		B2519B3129F0EDF200D649C1 /* InboxVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxVM.swift; sourceTree = "<group>"; };
+		B2519B3329F4DB3400D649C1 /* UpcomingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingView.swift; sourceTree = "<group>"; };
 		B27C39D329E9D78F00757662 /* SectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionView.swift; sourceTree = "<group>"; };
 		B27C3A0229EB05E800757662 /* TodoistService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoistService.swift; sourceTree = "<group>"; };
 		B27C3A0429EB061100757662 /* ProjectSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectSection.swift; sourceTree = "<group>"; };
@@ -89,6 +95,9 @@
 				B27C3A0629EB19B300757662 /* TaskView.swift */,
 				B27C3A0A29EB42C600757662 /* TaskInfoView.swift */,
 				B23B414129EB7F6D0062A3E7 /* TodayView.swift */,
+				B2519B2F29F0EDB700D649C1 /* InboxTaskInfoView.swift */,
+				B2519B3329F4DB3400D649C1 /* UpcomingView.swift */,
+				B2519B3129F0EDF200D649C1 /* InboxVM.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -245,6 +254,7 @@
 				B2B8A94429E492D8005ECA83 /* Home View.swift in Sources */,
 				B2E93B9929E5E10F0008A054 /* AddTaskToInboxView.swift in Sources */,
 				B2B8A94E29E4A117005ECA83 /* AddSectionView.swift in Sources */,
+				B2519B3429F4DB3400D649C1 /* UpcomingView.swift in Sources */,
 				B2B8A95029E4A1E9005ECA83 /* AddSectionViewViewModel.swift in Sources */,
 				B2B8A94629E4944E005ECA83 /* AddProjectView.swift in Sources */,
 				B2B8A95529E4A99C005ECA83 /* ProjectAddTaskView.swift in Sources */,
@@ -254,9 +264,11 @@
 				B27C3A0329EB05E800757662 /* TodoistService.swift in Sources */,
 				B2EBA6B829E2622E00499256 /* ContentView.swift in Sources */,
 				B27C3A0729EB19B300757662 /* TaskView.swift in Sources */,
+				B2519B3229F0EDF200D649C1 /* InboxVM.swift in Sources */,
 				B2EBA6B629E2622E00499256 /* TodoistApp.swift in Sources */,
 				B2B6456329E4D78B003C6EE4 /* ManageProjectsView.swift in Sources */,
 				B27C3A0B29EB42C600757662 /* TaskInfoView.swift in Sources */,
+				B2519B3029F0EDB700D649C1 /* InboxTaskInfoView.swift in Sources */,
 				B2EBA6D829E273F200499256 /* Project.swift in Sources */,
 				B2B8A94829E494F7005ECA83 /* AddProjectViewViewModel.swift in Sources */,
 				B23B414229EB7F6D0062A3E7 /* TodayView.swift in Sources */,

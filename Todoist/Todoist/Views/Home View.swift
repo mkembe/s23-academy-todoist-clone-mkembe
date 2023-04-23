@@ -14,7 +14,7 @@ struct Home_View: View {
     init() {
       let coloredAppearance = UINavigationBarAppearance()
       coloredAppearance.configureWithOpaqueBackground()
-      coloredAppearance.backgroundColor = .systemBlue
+      coloredAppearance.backgroundColor = .systemCyan
       coloredAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
       coloredAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
       
@@ -57,7 +57,11 @@ struct Home_View: View {
                         HStack {
                             Image(systemName: "calendar")
                                 .foregroundColor(.purple)
-                            Text("Upcoming")
+                            NavigationLink {
+                                UpcomingView(ts: ts)
+                            } label: {
+                                Text("Upcoming")
+                            }
                         }
                     }
                     Section {
@@ -132,7 +136,7 @@ struct Home_View: View {
                     }  label: {
                         Image(systemName: "plus.circle.fill")
                             .resizable()
-                            .foregroundColor(.blue)
+                            .foregroundColor(.cyan)
                             .scaledToFill()
                             .frame(width: 40, height: 40)
 
@@ -141,7 +145,7 @@ struct Home_View: View {
                     .padding(.leading, 300)
                     .sheet(isPresented: $vm.inboxAdd) {
                         AddTaskToInboxView(vm: vm, ts: ts)
-                            .presentationDetents([.fraction(0.15)])
+                            .presentationDetents([.fraction(0.25)])
 
                     }
                 }

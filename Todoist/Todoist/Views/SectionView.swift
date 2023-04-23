@@ -12,6 +12,7 @@ struct SectionView: View {
     @ObservedObject var ts: TodoistService
     @Binding var section: ProjectSection
     @ObservedObject var patsvm: ProjectAddTaskViewModel
+    @Binding var project: Project
     
     var body: some View {
         VStack {
@@ -21,7 +22,6 @@ struct SectionView: View {
                     .multilineTextAlignment(.trailing)
 
                 Text("\(section.tasks.count)").foregroundColor(.gray)
-                
             }
             .padding(.leading, -180)
             .padding(.top, 30)
@@ -51,7 +51,10 @@ struct SectionView: View {
                 }
             }
             .sheet(isPresented: $patsvm.showingSheet) {
-                ProjectAddTaskView(ts: ts, vm: patsvm, section: $section)
+                ProjectAddTaskView(ts: ts, vm: patsvm, section: $section, project: $project)
+                    .presentationDetents([.fraction(0.25)])
+
+                
             }
             .padding(.top)
             Spacer()
@@ -64,6 +67,6 @@ struct SectionView: View {
 
 struct SectionView_Previews: PreviewProvider {
     static var previews: some View {
-        SectionView(ts: TodoistService(), section: .constant(ProjectSection(name: "")), patsvm: ProjectAddTaskViewModel())
+        SectionView(ts: TodoistService(), section: .constant(ProjectSection(name: "")), patsvm: ProjectAddTaskViewModel(), project: .constant(Project(name: "Name")))
     }
 }

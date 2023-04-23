@@ -20,7 +20,7 @@ struct ProjectView: View {
                     
                 ForEach($project.sections) { $i in
                     VStack {
-                        SectionView(ts: ts, section: $i, patsvm: patsvm)
+                        SectionView(ts: ts, section: $i, patsvm: patsvm, project: $project)
                     }
                     
                     

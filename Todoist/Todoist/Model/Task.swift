@@ -11,9 +11,9 @@ import SwiftUI
 struct Task: Identifiable {
     var id = UUID()
     var name: String
-    var isCompleted: Bool
+    var isCompleted: Bool = false
     var description: String?
-    var dueDate: Date 
+    var dueDate: Date? = nil
 }
 
 extension Binding {
